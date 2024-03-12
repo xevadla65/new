@@ -1,0 +1,88 @@
+#
+Вот пример простой реализации игры "Морской бой" на Python. В этой реализации игрок и компьютер по очереди выбирают координаты клетки на игровом поле, чтобы атаковать корабли противника. Побеждает тот, кто первым потопит все корабли противника.
+
+import random
+
+# Создаем игровое поле
+def create_board(size):
+    board = []
+    for _ in range(size):
+        board.append(["O"] * size)
+    return board
+
+# Выводим игровое поле на экран
+def print_board(board):
+    for row in board:
+        print(" ".join(row))
+
+# Размещаем корабли на поле
+def place_ships(board, num_ships):
+    for _ in range(num_ships):
+        ship_row = random.randint(0, len(board) - 1)
+        ship_col = random.randint(0, len(board) - 1)
+        board[ship_row][ship_col] = "S"
+
+# Проверяем координаты на попадание
+def check_guess(board, guess_row, guess_col):
+    if board[guess_row][guess_col] == "S":
+        print("Попадание!")
+        return True
+    else:
+        print("Мимо!")
+        return False
+
+# Основная функция игры
+def play_battleship(board_size, num_ships):
+    print("Добро пожаловать в игру 'Морской бой'!")
+    print("Ваше поле:")
+    player_board = create_board(board_size)
+    print_board(player_board)
+
+    print("Расставляем корабли...")
+    place_ships(player_board, num_ships)
+    print_board(player_board)
+
+    while True:
+        # Ход игрока
+        print("Ваш ход!")
+        guess_row = int(input("Введите номер строки: "))
+        guess_col = int(input("Введите номер столбца: "))
+
+        if guess_row < 0 or guess_row >= board_size or guess_col < 0 or guess_col >= board_size:
+            print("Вы выбрали недопустимые координаты! Попробуйте снова.")
+            continue
+
+        if check_guess(player_board, guess_row, guess_col):
+            player_board[guess_row][guess_col] = "X"
+            print_board(player_board)
+
+            # Проверка на победу
+            if all("S" not in row for row in player_board):
+                print("Поздравляем! Вы победили!")
+                break
+        else:
+            player_board[guess_row][guess_col] = "-"
+            print_board(player_board)
+
+        # Ход компьютера
+        print("Ход компьютера!")
+        comp_guess_row = random.randint(0, board_size - 1)
+        comp_guess_col = random.randint(0, board_size - 1)
+
+        if check_guess(player_board, comp_guess_row, comp_guess_col):
+            player_board[comp_guess_row][comp_guess_col] = "X"
+            print_board(player_board)
+
+            # Проверка на победу
+            if all("S" not in row for row in player_board):
+                print("Компьютер победил! Попробуйте еще раз.")
+                break
+        else:
+            player_board[comp_guess_row][comp_guess_col] = "-"
+            print_board(player_board)
+
+# Запуск игры
+play_battleship(5, 3)  # Размер поля: 5x5, 3 корабля
+
+
+#В этой версии игры игрок играет против компьютера. Корабли случайным образом располагаются на поле. Игрок и компьютер поочередно выбирают координаты, чтобы атаковать корабли противника. Первый, кто потопит все корабли противника, побеждает.
