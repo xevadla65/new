@@ -49,7 +49,7 @@ def play_battleship(board_size, num_ships):
         guess_col = int(input("Введите номер столбца: "))
 
         if guess_row < 0 or guess_row >= board_size or guess_col < 0 or guess_col >= board_size:
-            print("Вы выбрали недопустимые координаты! Попробуйте снова.")
+            print("Вы выбрали недопустимые координаты! Попробуйте снова")
             continue
 
         if check_guess(player_board, guess_row, guess_col):
