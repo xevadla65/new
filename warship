@@ -75,7 +75,7 @@ def play_battleship(board_size, num_ships):
 
             # Проверка на победу
             if all("S" not in row for row in player_board):
-                print("Компьютер победил! Попробуйте еще раз.")
+                print("Компьютер победил! Попробуйте еще раз")
                 break
         else:
             player_board[comp_guess_row][comp_guess_col] = "-"
