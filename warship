@@ -25,7 +25,7 @@ def place_ships(board, num_ships):
 # Проверяем координаты на попадание
 def check_guess(board, guess_row, guess_col):
     if board[guess_row][guess_col] == "S":
-        print("Попадание!")
+        print("Попадание")
         return True
     else:
         print("Мимо!")
