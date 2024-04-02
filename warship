@@ -31,7 +31,7 @@ def check_guess(board, guess_row, guess_col):
         print("Мимо!")
         return False
 
-# Основная функция игры
+# Основная функция игры!!!
 def play_battleship(board_size, num_ships):
     print("Добро пожаловать в игру 'Морской бой'")
     print("Ваше поле:")
