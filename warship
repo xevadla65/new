@@ -45,7 +45,7 @@ def play_battleship(board_size, num_ships):
     while True:
         # Ход игрока
         print("Ваш ход!")
-        guess_row = int(input("Введите номер строки: "))
+        guess_row = int(input("Введите номер строкиё!: "))
         guess_col = int(input("Введите номер столбца: "))
 
         if guess_row < 0 or guess_row >= board_size or guess_col < 0 or guess_col >= board_size:
