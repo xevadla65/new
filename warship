@@ -2,6 +2,7 @@
 
 import random
 
+
 # Создаем игровое поле:
 def create_board(size):
     board = []
